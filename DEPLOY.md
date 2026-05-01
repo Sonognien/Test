@@ -6,8 +6,9 @@
 2. Dans Vercel, cliquez sur **Add New > Project**.
 3. Importez le repository.
 4. Framework preset: **Next.js**.
-5. Ajoutez les variables d'environnement depuis `.env.example`.
-6. Deployer.
+5. Root Directory: laissez vide si `package.json` et `app/` sont a la racine du repository. Sinon, selectionnez exactement le dossier qui contient `package.json` et `app/`.
+6. Ajoutez les variables d'environnement depuis `.env.example`.
+7. Deployer.
 
 Vercel active HTTPS automatiquement sur l'URL `vercel.app`. Pour un domaine personnalise, ajoutez le domaine dans **Project Settings > Domains** et suivez les enregistrements DNS indiques.
 

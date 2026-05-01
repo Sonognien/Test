@@ -2,6 +2,12 @@
 
 Application Next.js pour un blog francophone sur l'electronique, l'informatique et l'electricite avec forum, newsletter, formations privees et abonnements.
 
+## Structure importante
+
+- `app/`: routes Next.js App Router detectees directement par Vercel.
+- `src/components`: composants React reutilisables.
+- `src/lib`: integrations, securite, contenu et schema de base de donnees.
+
 ## Demarrage
 
 ```bash

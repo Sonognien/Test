@@ -1,10 +1,10 @@
 {
   "regions": ["iad1"],
   "functions": {
-    "src/app/api/**/*.ts": {
+    "app/api/**/*.ts": {
       "maxDuration": 10
     },
-    "src/app/api/cron/weekly-digest/route.ts": {
+    "app/api/cron/weekly-digest/route.ts": {
       "maxDuration": 30
     }
   },
