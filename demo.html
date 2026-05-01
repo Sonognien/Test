@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Démo - Tech Atelier</title>
+    <style>
+      :root {
+        --bg: #f7f8f5;
+        --ink: #171a1f;
+        --muted: #5e6875;
+        --line: #d8ded6;
+        --panel: #ffffff;
+        --soft: #eef4f0;
+        --accent: #007c78;
+        --warm: #c74e32;
+        --blue: #2b5f9e;
+        --dark: #111827;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      a { color: inherit; text-decoration: none; }
+      .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 248, 245, .94);
+        backdrop-filter: blur(12px);
+      }
+      nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 850; }
+      .mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 8px; background: var(--dark); color: white; }
+      .links { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: 15px; }
+      .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; min-height: 42px;
+        padding: 0 16px; border: 1px solid var(--dark); border-radius: 8px;
+        background: var(--dark); color: white; font-weight: 750;
+      }
+      .btn.secondary { background: transparent; color: var(--dark); }
+      .btn.accent { background: var(--accent); border-color: var(--accent); }
+      .hero { min-height: calc(100vh - 72px); display: grid; align-items: center; padding: 54px 0 36px; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr); gap: 44px; align-items: center; }
+      .eyebrow { color: var(--accent); font-weight: 850; }
+      h1, h2, h3 { margin: 0; line-height: 1.04; }
+      h1 { font-size: clamp(3rem, 7vw, 6.4rem); }
+      h2 { font-size: clamp(2rem, 4vw, 3.6rem); }
+      h3 { font-size: 1.3rem; }
+      p { color: var(--muted); line-height: 1.65; }
+      .lead { max-width: 720px; font-size: 1.16rem; }
+      .hero-card { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: white; }
+      .hero-card img, .card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+      .hero-card img { aspect-ratio: 4 / 3; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+      .stat, .card, .panel { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+      .stat { padding: 16px; }
+      .stat strong { display: block; font-size: 1.55rem; }
+      section { padding: 70px 0; }
+      .head { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 28px; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+      .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(290px, 420px); gap: 28px; }
+      .body { padding: 22px; }
+      .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+      .badge { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; background: var(--soft); font-weight: 750; font-size: 13px; }
+      .badge.hot { background: #fff1dc; color: #7d3b0c; }
+      .dark { background: var(--dark); color: white; }
+      .dark p { color: #cbd5e1; }
+      .dark .panel { background: #182231; border-color: #2c3647; }
+      .rows { display: grid; gap: 12px; }
+      .row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+      .dark .row { background: #182231; border-color: #2c3647; }
+      input, textarea, select {
+        width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 8px;
+        padding: 10px 12px; font: inherit; background: white;
+      }
+      textarea { min-height: 120px; resize: vertical; }
+      form { display: grid; gap: 12px; }
+      footer { padding: 34px 0; border-top: 1px solid var(--line); }
+      @media (max-width: 900px) {
+        nav, .head { align-items: flex-start; flex-direction: column; }
+        .hero-grid, .two, .grid { grid-template-columns: 1fr; }
+        .stats { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="#"><span class="mark">TA</span><span>Tech Atelier</span></a>
+        <div class="links">
+          <a href="#blog">Blog</a><a href="#forum">Forum</a><a href="#formations">Formations</a><a href="#services">Services</a><a href="#contact">Contact</a>
+        </div>
+        <div class="actions"><a class="btn secondary" href="#admin">Admin</a><a class="btn accent" href="#membre">Membre</a></div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <p class="eyebrow">Electronique, informatique, electricite</p>
+            <h1>Tech Atelier</h1>
+            <p class="lead">Un blog moderne pour apprendre, diagnostiquer, reparer et echanger autour des technologies utiles au terrain: articles, videos, forum, formations privees et services.</p>
+            <div class="actions"><a class="btn accent" href="#blog">Lire les tutos</a><a class="btn secondary" href="#forum">Ouvrir le forum</a></div>
+            <div class="stats">
+              <div class="stat"><strong>3</strong><p>domaines techniques</p></div>
+              <div class="stat"><strong>Forum</strong><p>discussions moderees</p></div>
+              <div class="stat"><strong>Samedi</strong><p>digest newsletter</p></div>
+            </div>
+          </div>
+          <div class="hero-card"><img alt="Atelier technique" src="https://images.unsplash.com/photo-1581092160607-ee22731c2f94?auto=format&fit=crop&w=1200&q=80"></div>
+        </div>
+      </section>
+
+      <section id="blog">
+        <div class="shell">
+          <div class="head"><div><p class="eyebrow">Dernieres publications</p><h2>Articles, guides et videos</h2></div><a class="btn secondary" href="#">Tout voir</a></div>
+          <div class="grid">
+            <article class="card"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt=""><div class="body"><div class="badges"><span class="badge">Electronique</span><span class="badge hot">Tutoriel</span></div><h3>Diagnostiquer une alimentation qui ne demarre plus</h3><p>Controler les tensions, isoler les pannes et eviter les fausses pistes.</p></div></article>
+            <article class="card"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt=""><div class="body"><div class="badges"><span class="badge">Informatique</span><span class="badge hot">Guide</span></div><h3>Creer son mini laboratoire reseau a la maison</h3><p>Routeur, VLAN, serveur local et bonnes pratiques pour apprendre.</p></div></article>
+            <article class="card"><img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80" alt=""><div class="body"><div class="badges"><span class="badge">Electricite</span><span class="badge hot">Video</span></div><h3>Mesurer une installation avant intervention</h3><p>Les controles essentiels pour travailler proprement et documenter le depannage.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="forum" class="dark">
+        <div class="shell two">
+          <div>
+            <p class="eyebrow">Forum complet</p>
+            <h2>Une communaute pour discuter chaque probleme technique</h2>
+            <p>Categories, sujets, reponses, profils utilisateurs, moderation admin et signalements.</p>
+          </div>
+          <div class="rows">
+            <div class="row"><div><h3>Aide depannage</h3><p>Pannes, mesures, schemas et retours de diagnostic.</p></div><span class="badge">42 sujets</span></div>
+            <div class="row"><div><h3>Projets membres</h3><p>Montages, scripts, tableaux et prototypes.</p></div><span class="badge">27 sujets</span></div>
+            <div class="row"><div><h3>Questions formations</h3><p>Echanges autour des cours prives.</p></div><span class="badge">18 sujets</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="formations">
+        <div class="shell">
+          <div class="head"><div><p class="eyebrow">Formations privees</p><h2>Parcours membres</h2></div><a class="btn accent" href="#membre">Debloquer les formations</a></div>
+          <div class="grid">
+            <article class="card"><div class="body"><span class="badge hot">Premium</span><h3>Diagnostic electronique</h3><p>Mesures, composants, alimentation et logique de recherche de panne.</p></div></article>
+            <article class="card"><div class="body"><span class="badge hot">Premium</span><h3>Administration reseau</h3><p>IP, DNS, VLAN, VPN, supervision et documentation.</p></div></article>
+            <article class="card"><div class="body"><span class="badge hot">Premium</span><h3>Electricite pratique</h3><p>Lire, mesurer, securiser et preparer une intervention propre.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="shell two">
+          <div>
+            <p class="eyebrow">Services</p>
+            <h2>Formation, depannage et reparation</h2>
+            <p>Les visiteurs peuvent demander un devis ou payer un abonnement pour acceder aux formations.</p>
+            <div class="grid">
+              <div class="stat"><strong>Formation privee</strong><p>Videos, PDF et exercices.</p></div>
+              <div class="stat"><strong>Depannage</strong><p>Analyse de panne et plan d'action.</p></div>
+              <div class="stat"><strong>Reparation</strong><p>Prise en charge selon diagnostic.</p></div>
+            </div>
+          </div>
+          <div class="panel body" id="contact">
+            <h3>Demande de service</h3>
+            <form><input placeholder="Nom complet"><input placeholder="Email"><select><option>Depannage</option><option>Formation privee</option><option>Reparation</option></select><textarea placeholder="Decrivez le besoin"></textarea><button class="btn" type="button">Envoyer</button></form>
+          </div>
+        </div>
+      </section>
+
+      <section id="membre" class="dark">
+        <div class="shell two">
+          <div>
+            <p class="eyebrow">Espace membre</p>
+            <h2>Acces aux formations par abonnement</h2>
+            <p>Stripe Checkout active l'abonnement, puis le webhook synchronise l'acces aux cours reserves.</p>
+          </div>
+          <div class="panel body">
+            <h3>Newsletter du week-end</h3>
+            <form><input placeholder="Votre nom"><input placeholder="email@domaine.com"><button class="btn accent" type="button">Recevoir le digest</button></form>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin">
+        <div class="shell">
+          <p class="eyebrow">Admin integre</p>
+          <h2>Tableau de bord</h2>
+          <div class="grid">
+            <div class="stat"><strong>Contenus</strong><p>Creer, modifier, publier articles, medias et formations.</p></div>
+            <div class="stat"><strong>Moderation</strong><p>Valider les sujets, reponses et signalements forum.</p></div>
+            <div class="stat"><strong>Newsletter</strong><p>Previsualiser le digest automatique du samedi.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="shell"><p>Démo statique de Tech Atelier. Le projet Next.js complet se trouve dans le même dossier.</p></div></footer>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+demo-server.err.log
+demo-server.log
+serve-demo-node.js
+serve-demo.ps1
+demo.html
+.env.local
+.env*.local
