@@ -1,0 +1,10 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+@layer components{
+.card{@apply rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900}
+.btn{@apply inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 font-semibold text-white hover:bg-indigo-500}
+.btn2{@apply inline-flex items-center justify-center rounded-xl border border-slate-300 px-4 py-2.5 dark:border-slate-700}
+.field{@apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 outline-none focus:border-indigo-500 dark:border-slate-700 dark:bg-slate-950}
+.topic{@apply w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-slate-100 dark:hover:bg-slate-800}
+}
+body{@apply m-0 bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-100}
+.hero{background:radial-gradient(circle at top right,rgba(79,70,229,.16),transparent 42%)}
