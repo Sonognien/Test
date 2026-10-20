@@ -1,22 +1,9 @@
 # Europoker — staging
 
-Branche de staging : `Sonognien/Test#staging`.
+Branche active : `staging`.
 
-## Backend
-- Supabase project: `plateforme-scientifique-staging` (`eflpdvbsndohopnwssge`)
-- RLS activé sur les tables publiques
-- Edge Function `guest-24h-check`
-- Recherche plein texte française
-- 10 thématiques initiales
-- Article de démonstration publié
+Le projet a été nettoyé pour correspondre à la stack demandée : React + Vite + JavaScript, Supabase et Cloudflare Pages.
 
-## Frontend
-- React 18 + Vite + TypeScript + Tailwind
-- Auth email / Google / Microsoft
-- Articles, recherche, commentaires, espace admin
-- Mode clair/sombre
-- Limite invitée vérifiée côté serveur
+Les anciens fichiers Next.js/Vercel/Clerk/Neon/Drizzle ont été retirés de cette branche. La branche `main` reste inchangée pour préserver l'historique.
 
-## Infrastructure
-- Cloudflare Pages staging créé
-- Cloudflare R2 reste bloqué tant que R2 n'est pas activé une première fois dans le Dashboard Cloudflare (erreur API 10042).
+R2 est volontairement différé jusqu'à son activation manuelle dans Cloudflare.
